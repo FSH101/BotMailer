@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: telegram-drive-link-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: TIMEZONE
+        value: Europe/Moscow
+      - key: MAX_TELEGRAM_DOWNLOAD_MB
+        value: "20"
+      - key: GOOGLE_ROOT_FOLDER_NAME
+        value: Telegram Documents
+      - key: GOOGLE_SHEET_TAB
+        value: Реестр
+      - key: DRIVE_LINK_ACCESS
+        value: private
+      - key: EMAIL_ENABLED
+        value: "false"
+      - key: AUTO_EMAIL_ON_UPLOAD
+        value: "false"
